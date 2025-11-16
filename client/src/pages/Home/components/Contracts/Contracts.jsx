@@ -118,18 +118,18 @@ const Contracts = () => {
   return (
     <>
       <div className="contract-wrapper">
+        {userLastViewed ?
+          <div className="contact-text">Do you need to update your contact information?<br />The last time you confirmed your contact information was {userLastViewed}.</div>
+          :
+          <div className="contact-text">Your contact information has never been confirmed<br />Please confirm the contact information is correct.</div>
+        }
+        <button className="contact-btn" onClick={handleContactButtonClick}>Contact Information</button>
         {state === "loading" ? (
           <></>
         ) : state === "done" && (!contracts || contracts.length <= 0) ? (
           <div>No active contracts.</div>
         ) : (
           <>
-            {userLastViewed ?
-              <div className="contact-text">Do you need to update your contact information?<br />The last time you confirmed your contact information was {userLastViewed}.</div>
-              :
-              <div className="contact-text">Your contact information has never been confirmed<br />Please confirm the contact information is correct.</div>
-            }
-            <button className="contact-btn" onClick={handleContactButtonClick}>Contact Information</button>
             <div className="contracts">
               {contracts.map((contract, index) => (
                 <div
